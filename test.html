@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/prefixfree.min.js"></script>
+    <style>
+        .mwrap{
+            display: none;
+            width: 1000px;
+            height: 800px;
+            margin-top: 30px;
+            margin-left: 100px;
+            position: absolute;
+            background: #eeeeee;
+            z-index: 2;
+        }
+        .m_bg{
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .mclose{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: -30px;
+            right: 0;
+        }
+        .mclose > a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: seagreen;
+            text-indent: -9999px;
+        }
+        #mmenu{
+            display: none;
+            background-color: seashell;
+            position: absolute;
+            z-index: 2;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#modal_btn:nth-child(n)").on("click",function(){
+                var sel = $(this).index();
+            console.log("뭐지 "+sel);
+
+                $(".m_bg").fadeIn();
+                $(".mwrap").eq(sel).fadeIn();
+            });
+            $(".mclose, .m_bg").on("click",function(){
+                $(".m_bg").fadeOut();
+                $(".mwrap").fadeOut();
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="modal_btn">모달창</button>
+    <div class="m_bg"></div>
+
+    <div class="mwrap">
+    <div class="mclose"><a href="#">닫기</a></div>
+        <div id="mcon">내용내용</div>
+    </div>
+    <div id="mmenu">
+        <ul>
+            <li>첫번째</li>
+            <li>두번째</li>
+            <li>세번째</li>
+        </ul>
+    </div>
+    <button id="modal_btn">모달창2</button>
+    <div class="m_bg"></div>
+
+    <div class="mwrap">
+    <div class="mclose"><a href="#">닫기</a></div>
+        <div id="mcon">내용내용2</div>
+    </div>
+    <div id="mmenu">
+        <ul>
+            <li>첫번째</li>
+            <li>두번째</li>
+            <li>세번째</li>
+        </ul>
+    </div>
+
+</body>
+</html>
